@@ -20,3 +20,17 @@ def del_im(id_im):
     }
     requests.delete('https://dialogs.yandex.net/api/v1/skills/%3Cидентификатор%20навыка%3E/images/{}'.format(id_im),
                     headers=headers)
+
+def start():
+    url = 'https://deckofcardsapi.com/api/deck/new/shuffle/'
+    response = requests.get(url)
+    json = response.json()
+    
+    return json['deck_id']
+
+def take_card(deck_id):
+    url = 'https://deckofcardsapi.com/api/deck/{}/draw/?count=1'.format(deck_id)
+    response = requests.get(url)
+    json = response.json()
+    
+    return json['cards']
