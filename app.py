@@ -124,8 +124,6 @@ def handle_dialog(res, req):
                 play_game(res, req)
 
             elif 'нет' in req['request']['nlu']['tokens']:
-                for k, v in mega_card.items():
-                    del_im(v)
                 res['response']['text'] = 'Хорошо, приходите ещё!'
                 sessionStorage[user_id]['game_started'] = False
                 sessionStorage[user_id]['game_id'] = None
