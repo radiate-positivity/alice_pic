@@ -194,9 +194,6 @@ def play_game(res, req):
         res['response']['card'][
             'title'] = 'Вы вытащили {}, это {}. Всего очков: {}. Берём ещё карту?'.format(card, p_o, p) 
         res['response']['card']['image_id'] = mega_cards[card] 
-        sessionStorage[user_id]['game_started'] = False
-        sessionStorage[user_id]['game_id'] = None
-        sessionStorage[user_id]['point'] = 0
 
     res['response']['buttons'] = [
         {
