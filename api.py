@@ -9,7 +9,9 @@ def add_im(url_im):
     data = '{ "url": "' + url_im + '" }'
     response = requests.post('https://dialogs.yandex.net/api/v1/skills/74ad82e4-64fc-4474-97e6-3237ce9b2501/images',
                              headers=headers, data=data)
+    print(response)
     json = response.json()
+    print(json)
     
     return response['image']['id']
 
