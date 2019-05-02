@@ -193,7 +193,7 @@ def play_game(res, req):
         res['response']['card']['type'] = 'BigImage'
         res['response']['card'][
             'title'] = 'Вы вытащили {}, это {}. Всего очков: {}. Берём ещё карту?'.format(card, p_o, p) 
-        res['response']['card']['image_id'] = mega-card[card] 
+        res['response']['card']['image_id'] = mega_cards[card] 
         sessionStorage[user_id]['game_started'] = False
         sessionStorage[user_id]['game_id'] = None
         sessionStorage[user_id]['point'] = 0
@@ -230,8 +230,8 @@ def take(game_id, point, res):
         point += P[card[0]]
         ru_crd[0] = V[card[0]]
     ru_crd[1] = K[card[1]]
-    if ''.join(ru_crd) not in mega_card:
-        mega_card[''.join(ru_crd)] = add_im(url_card) 
+    if ''.join(ru_crd) not in mega_cards:
+        mega_cards[''.join(ru_crd)] = add_im(url_card) 
     return point, p_o, ''.join(ru_crd)
 
 
