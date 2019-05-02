@@ -4,7 +4,7 @@ import json
 import os
 import requests
 import sys
-from resp import add_im, del_im
+from api import add_im, del_im, start, take_card
 
 app = Flask(__name__)
 
@@ -124,6 +124,8 @@ def handle_dialog(res, req):
                 play_game(res, req)
 
             elif 'нет' in req['request']['nlu']['tokens']:
+                for k, v in mega_card.items():
+                    del_im(v)
                 res['response']['text'] = 'Хорошо, приходите ещё!'
                 sessionStorage[user_id]['game_started'] = False
                 sessionStorage[user_id]['game_id'] = None
