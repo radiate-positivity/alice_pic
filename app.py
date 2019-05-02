@@ -174,8 +174,7 @@ def play_game(res, req):
         res['response']['card'] = {}
         res['response']['card']['type'] = 'BigImage'
         res['response']['card'][
-            'title'] = 'Вы вытащили {}, это {} очков. Всего у вас 21 очко! Вы выйграли! Хотите сыграть ещё?'.format(
-            card, p_o)
+            'title'] = 'Вы вытащили {}, это {} очков. Всего у вас 21 очко! Вы выйграли! Хотите сыграть ещё?'.format(card, p_o)
         res['response']['card']['image_id'] = WIN
         sessionStorage[user_id]['game_started'] = False
         sessionStorage[user_id]['game_id'] = None
@@ -185,8 +184,7 @@ def play_game(res, req):
         res['response']['card'] = {}
         res['response']['card']['type'] = 'BigImage'
         res['response']['card'][
-            'title'] = 'Вы вытащили {}, это {}. Всего очков: {}. Вы проиграли :( Хотите сыграть ещё?'.format(card, p_o,
-                                                                                                             p)
+            'title'] = 'Вы вытащили {}, это {}. Всего очков: {}. Вы проиграли :( Хотите сыграть ещё?'.format(card, p_o, p)
         res['response']['card']['image_id'] = LOSE
         sessionStorage[user_id]['game_started'] = False
         sessionStorage[user_id]['game_id'] = None
@@ -196,7 +194,7 @@ def play_game(res, req):
         res['response']['card'] = {}
         res['response']['card']['type'] = 'BigImage'
         res['response']['card'][
-            'title'] = ' 'Вы вытащили {}, это {}. Всего очков: {}. Берём ещё карту?'.format(card, p_o, p) 
+            'title'] = 'Вы вытащили {}, это {}. Всего очков: {}. Берём ещё карту?'.format(card, p_o, p) 
         res['response']['card']['image_id'] = mega-card[card] 
         sessionStorage[user_id]['game_started'] = False
         sessionStorage[user_id]['game_id'] = None
