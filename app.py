@@ -219,7 +219,7 @@ def take(game_id, point, res):
     card = None
     cards = take_card(game_id)
     card = cards[-1]['code']
-    url_card = cards[-1]['url']
+    url_card = cards[-1]['image']
     ru_crd = list(card)
     res['response']['text'] = '{}'.format(card)
     if card[0].isdigit() and card[0] != '0':
