@@ -4,6 +4,7 @@ import json
 import os
 import requests
 import sys
+from resp import add_im, del_im
 
 app = Flask(__name__)
 
@@ -190,7 +191,15 @@ def play_game(res, req):
         sessionStorage[user_id]['point'] = 0
 
     else:
-        res['response']['text'] = 'Вы вытащили {}, это {}. Всего очков: {}. Берём ещё карту?'.format(card, p_o, p)
+        res['response']['card'] = {}
+        res['response']['card']['type'] = 'BigImage'
+        res['response']['card'][
+            'title'] = ' 'Вы вытащили {}, это {}. Всего очков: {}. Берём ещё карту?'.format(card, p_o, p) 
+        res['response']['card']['image_id'] = mega-card[card] 
+        sessionStorage[user_id]['game_started'] = False
+        sessionStorage[user_id]['game_id'] = None
+        sessionStorage[user_id]['point'] = 0
+
     res['response']['buttons'] = [
         {
             'title': 'Да',
@@ -212,6 +221,7 @@ def take(game_id, point, res):
     card = None
     cards = take_card(game_id)
     card = cards[-1]['code']
+    url_card = cards[-1]['url']
     ru_crd = list(card)
     res['response']['text'] = '{}'.format(card)
     if card[0].isdigit() and card[0] != '0':
@@ -222,6 +232,8 @@ def take(game_id, point, res):
         point += P[card[0]]
         ru_crd[0] = V[card[0]]
     ru_crd[1] = K[card[1]]
+    if ''.join(ru_crd) not in mega_card:
+        mega_card[''.join(ru_crd)] = add_im(url_card) 
     return point, p_o, ''.join(ru_crd)
 
 
