@@ -7,7 +7,7 @@ def add_im(url_im):
         'Content-Type': 'application/json'
     }
 
-    data = '{ "url": "{}" }'.format(url_im)
+    data = '{ "url": "' + url_im + '" }'
 
     response = requests.post('https://dialogs.yandex.net/api/v1/skills/74ad82e4-64fc-4474-97e6-3237ce9b2501/images',
                              headers=headers, data=data)
